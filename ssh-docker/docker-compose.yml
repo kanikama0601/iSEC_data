@@ -1,0 +1,14 @@
+services:
+  sshd_server:
+    build:
+      # Dockerfileの情報
+      context: ./sshd_server
+      dockerfile: Dockerfile
+    ports:
+      # ホスト:2222 -> コンテナ:22 に転送
+      - "2222:22"
+    container_name: sshd_server
+    restart: always
+    volumes:
+      # /rootを./sshd_server/serrver_dataにマウント
+      - ./sshd_server/server_data:/root
